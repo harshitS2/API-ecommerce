@@ -8,7 +8,7 @@ export const authMiddleware = async (req, res, next) =>{
     const decode = jwt.decode(token, process.env.JWT_SECRET);
     if(!decode)
         res.status(401).json({message: "User is not authorized"});
-    const user = await User.find(decode.userId);
+    const user = await User.findById(decode.userId);
     if(!user) 
         res.status(401).json({message: "User not found"});
     req.user = user;

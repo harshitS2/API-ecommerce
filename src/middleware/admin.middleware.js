@@ -1,5 +1,5 @@
 export const adminMiddleware = async (req, res, next) => {
-    user = req.user;
+    const user = req.user;
     if(!user) 
         res.status(401).json({message: "User is not authorized"});
     if(!user.isAdmin)
